@@ -1,0 +1,6 @@
+issue_tracker.issue_tracker_admin:
+  title: 'Issue Tracker'
+  route_name: issue_tracker.issue_tracker_admin
+  description: 'configure issue tracker'
+  parent: system.admin_config_development
+  weight: 99

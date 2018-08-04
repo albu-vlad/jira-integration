@@ -1,0 +1,10 @@
+
+issue_tracker.issue_tracker_admin:
+  path: '/admin/config/issue_tracker/issuetrackeradmin'
+  defaults:
+    _form: '\Drupal\issue_tracker\Form\IssueTrackerAdmin'
+    _title: 'IssueTrackerAdmin'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

@@ -1,0 +1,16 @@
+issue_tracker:
+  version: 1.x
+  css:
+    theme:
+      '//fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons': { type: external, minified: true }
+      css/app.9d14280155a11f9583e33a9a2321b0ce.css: {}
+      css/issue_tracker_css.css: {}
+  js:
+    js/issue_tracker.js: {weight: -10}
+    js/manifest.2ae2e69a05c33dfc65f8.js: {}
+    js/vendor.fdef87ab788c62d5b8cf.js: {}
+    js/app.18d5c6899f02de34e29a: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/drupalSettings

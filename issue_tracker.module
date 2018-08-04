@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Contains issue_tracker.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function issue_tracker_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the issue_tracker module.
+    case 'help.page.issue_tracker':
+      $url = Url::fromUri('https://id.atlassian.com/profile/profile.action', [
+        'attributes' => [
+          'target' => '_blank',
+        ],
+      ]);
+      $token = Link::fromTextAndUrl(t('Jira Profile'), $url);
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('jira integration') . '</p>';
+      $output .= '<p>' . t('Usage') . '</p>';
+      $output .= '<p>' . t('Get a jira token from your @token', ['@token' => $token->toString()]); '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function issue_tracker_preprocess_page(&$variables) {
+  $issue_tracker_config = [
+    'config' => get_issue_tracker_config_header(),
+  ];
+  $variables['#attached']['drupalSettings']['issue_tracker_settings'] = $issue_tracker_config['config'];
+  $variables['#attached']['library'][] = 'issue_tracker/issue_tracker';
+  $variables['#attached']['library'][] = 'issue_tracker/issue_tracker_css';
+  $variables['#attached']['library'][] = 'issue_tracker/manifest.2ae2e69a05c33dfc65f8';
+  $variables['#attached']['library'][] = 'issue_tracker/vendor.fdef87ab788c62d5b8cf';
+  $variables['#attached']['library'][] = 'issue_tracker/app.9d14280155a11f9583e33a9a2321b0ce';
+  $variables['#attached']['library'][] = 'issue_tracker/app.18d5c6899f02de34e29a';
+}
+
+/**
+ * Builds the header configuration variable.
+ *
+ * @return array
+ *   The header config.
+ */
+function get_issue_tracker_config_header() {
+  $credentials = \Drupal::config('issue_tracker.issuetrackeradmin')->get();
+  $header['user_email'] = $credentials['jira_email'];
+  $header['user_pass'] = $credentials['jira_token'];
+  $header['api_url'] = $credentials['jira_rest_query'];
+  return $header;
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function issue_tracker_page_top(array &$page_top) {
+  $page_top['issue_tracker'] = [
+    '#markup' => '<div id="app"></div>',
+  ];
+}

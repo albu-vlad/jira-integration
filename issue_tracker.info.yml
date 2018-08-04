@@ -1,0 +1,5 @@
+name: 'issue-tracker'
+type: module
+description: 'jira integration'
+core: 8.x
+package: 'Development'
