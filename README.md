@@ -1,5 +1,5 @@
 # jira integration module for drupal8
-The js distribution was built with [vue-jira](The js distribution was built with)
+The js distribution was built with [vue-jira](https://github.com/albu-vlad/vue-jira)
 
 ## Getting Started
 
