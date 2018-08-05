@@ -8,4 +8,3 @@ The js distribution was built with [vue-jira](https://github.com/albu-vlad/vue-j
 3. Make sure you have your domain name whitelisted on jira server or install a browser extension to enable CORS
 
 ![Screen1 demo](https://github.com/albu-vlad/jira-integration/blob/master/demo/ScreenA.png)
-![Screen2 demo](https://github.com/albu-vlad/jira-integration/blob/master/demo/ScreenB.png)
